@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gotest-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gotest-pod
+  template:
+    metadata:
+      labels:
+        app: gotest-pod
+    spec:
+      containers:
+        - name: gotest
+          image: mirrors.tencent.com/jk_game/gotest:latest
+          ports:
+            - containerPort: 8089

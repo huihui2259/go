@@ -8,6 +8,7 @@ import (
 
 func InitRouter() *gin.Engine {
 	router := gin.Default()
+	router.GET("/login", controller.Login)
 	router.GET("/save", controller.Save)
 	router.GET("/get", controller.GetUser)
 	router.GET("delete", controller.DeleteUser)

@@ -5,51 +5,40 @@ import (
 )
 
 // 对admin_user表的操作
-type AdminUser struct {
-	ID       int    `gorm:"column:id"`
-	UserName string `gorm:"column:user_name"`
-	Password string `gorm:"column:password"`
-	Tel      string `gorm:"column:tel"`
-	Addr     string `gorm:"column:addr"`
+type User struct {
+	ID         int    `gorm:"column:id"`
+	Phone      string `gorm:"column:phone"`
+	NickName   string `gorm:"column:nick_name"`
+	Password   string `gorm:"column:password"`
+	Icon       string `gorm:"column:icon"`
+	CreateTime string `gorm:"column:create_time"`
+	UpdateTime string `gorm:"column:update_time"`
 }
 
-func (AdminUser) TableName() string {
-	return "admin_user" // 数据库表的名称
+func (User) TableName() string {
+	return "tb_user" // 数据库表的名称
 }
 
-func SaveUser(user *AdminUser) error {
+func SaveUser(user *User) error {
 	log.Println(user)
 	result := Db.Create(user)
-
-	if result.Error != nil {
-		return result.Error
-	}
-	return nil
+	return result.Error
 }
 
-func GetUser(id int) (*AdminUser, error) {
-	user := &AdminUser{}
+func GetUser(id int) (*User, error) {
+	user := &User{}
 	result := Db.Find(user, "id = ?", id)
-	if result.Error != nil {
-		return user, result.Error
-	}
 	log.Println(user)
-	return user, nil
+	return user, result.Error
 }
 
 func Delete(id int) error {
 
-	result := Db.Where("id = ?", id).Delete(&AdminUser{})
-	if result.Error != nil {
-		return result.Error
-	}
-	return nil
+	result := Db.Where("id = ?", id).Delete(&User{})
+	return result.Error
 }
 
-func Update(user *AdminUser) error {
-	result := Db.Model(user).Where("id = ?", user.ID).Update("addr", user.Addr)
-	if result.Error != nil {
-		return result.Error
-	}
-	return nil
+func Update(user *User) error {
+	result := Db.Model(user).Where("id = ?", user.ID).Update("update_time", user.UpdateTime)
+	return result.Error
 }
