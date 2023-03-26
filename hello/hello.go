@@ -4,11 +4,6 @@ import (
 	"fmt"
 )
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
 func search(nums []int, target int) int {
 	if len(nums) == 1 && nums[0] != target {
 		return -1
@@ -38,7 +33,7 @@ func search(nums []int, target int) int {
 
 func main() {
 
-	a := []int{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}
-	fmt.Println(trap(a))
-
+	a := [][]int{{1, 3, 1}, {1, 5, 1}, {4, 2, 1}}
+	b := minPathSum(a)
+	fmt.Println(b)
 }

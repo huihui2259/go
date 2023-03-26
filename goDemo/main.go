@@ -7,6 +7,7 @@ import (
 	"goDemo/router"
 )
 
+// git token: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
 func main() {
 	r := router.InitRouter()
 	if err := r.Run(":8089"); err != nil {
