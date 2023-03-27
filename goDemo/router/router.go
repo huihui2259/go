@@ -9,10 +9,10 @@ import (
 func InitRouter() *gin.Engine {
 	router := gin.Default()
 	router.GET("/login", controller.Login)
-	router.GET("/save", controller.Save)
+	router.GET("/register", controller.Register)
 	router.GET("/get", controller.GetUser)
-	router.GET("delete", controller.DeleteUser)
-	router.GET("update", controller.Update)
+	router.GET("/delete", controller.DeleteUser)
+	router.GET("/update", controller.UpdateName)
 	router.GET("/ping", pingHandler)
 	router.GET("/ip", ipHandler)
 

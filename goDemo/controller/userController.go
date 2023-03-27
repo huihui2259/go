@@ -2,14 +2,15 @@ package controller
 
 import (
 	"encoding/json"
-	"goDemo/mysql"
-	"goDemo/redis"
+	"goDemo/entity"
+	"goDemo/service"
 	"goDemo/utils"
 	"log"
 	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 func Login(c *gin.Context) {
@@ -24,7 +25,7 @@ func Login(c *gin.Context) {
 		return
 	}
 	ID, _ := strconv.Atoi(id)
-	user, err := mysql.GetUser(ID)
+	user, err := service.GetUserByID(ID)
 	if err != nil {
 		utils.ReturnErrorString(c, "请先注册")
 	}
@@ -34,22 +35,21 @@ func Login(c *gin.Context) {
 	utils.ReturnOkString(c, "登录成功")
 }
 
-func Save(c *gin.Context) {
-	user := &mysql.User{}
+func Register(c *gin.Context) {
+	user := &entity.User{}
 	id := c.Query("id")
 	user.ID, _ = strconv.Atoi(id)
 	user.NickName = c.Query("nick_name")
 	user.Password = c.DefaultQuery("password", "123456")
 	user.Phone = c.DefaultQuery("phone", "120")
-	user.CreateTime = time.Now().Format("2006-01-02 15:04:05")
-	user.UpdateTime = time.Now().Format("2006-01-02 15:04:05")
+	user.CreateTime = time.Now().Format(utils.TimeFormat)
+	user.UpdateTime = time.Now().Format(utils.TimeFormat)
 	log.Println(user)
-	if err := mysql.SaveUser(user); err != nil {
-		utils.ReturnErrorString(c, "存储玩家数据错误")
+	if err := service.RegisterUser(user); err != nil {
+		utils.ReturnErrorString(c, err.String())
 		return
 	}
-	utils.ReturnOk(c)
-
+	utils.ReturnOkString(c, "注册成功")
 }
 
 func GetUser(c *gin.Context) {
@@ -58,25 +58,13 @@ func GetUser(c *gin.Context) {
 		utils.ReturnErrorString(c, "请输入ID")
 		return
 	}
-	// 首先从redis中查询缓存
-	if result, err := redis.GetUser(id + utils.UserIDPrefix); err == nil {
-		// redis能找到
-		utils.ReturnOkString(c, result)
-		return
-	}
-	// 缓存找不到，就找数据库
 	ID, _ := strconv.Atoi(id)
-	user, err := mysql.GetUser(ID)
+	user, err := service.GetUserByID(ID)
 	if err != nil {
-		utils.ReturnErrorString(c, "查询数据库出错")
-		return
+		utils.ReturnErrorString(c, err.String())
 	}
-	// 数据库找到，写回缓存
+	// 返回给前端
 	jsons, _ := json.Marshal(user)
-	if err := redis.SetUser(id, string(jsons)); err != nil {
-		utils.ReturnError(c)
-		return
-	}
 	utils.ReturnOkString(c, string(jsons))
 }
 
@@ -87,27 +75,27 @@ func DeleteUser(c *gin.Context) {
 		return
 	}
 	ID, _ := strconv.Atoi(id)
-	if err := mysql.Delete(ID); err != nil {
-		utils.ReturnErrorString(c, "删除数据库出错")
+	if err := service.Delete(ID); err != nil {
+		utils.ReturnErrorString(c, err.String())
 		return
 	}
-	utils.ReturnOk(c)
+	utils.ReturnOkString(c, "注销成功")
 }
 
-func Update(c *gin.Context) {
-	user := &mysql.User{}
+// 修改昵称
+func UpdateName(c *gin.Context) {
+	user := &entity.User{}
 	id, ok := c.GetQuery("id")
 	if !ok {
 		utils.ReturnErrorString(c, "请输入ID")
 		return
 	}
 	user.ID, _ = strconv.Atoi(id)
-	user.UpdateTime = time.Now().Format("1998-05-04 00:00:00")
-	if err := mysql.Update(user); err != nil {
-		c.JSON(404, gin.H{
-			"error": "修改数据库出错",
-		})
+	user.NickName = c.DefaultQuery("nick_name", uuid.New().String()[0:10])
+	user.UpdateTime = time.Now().Format(utils.TimeFormat)
+	if err := service.UpdateNickName(user); err != nil {
+		utils.ReturnErrorString(c, err.String())
 		return
 	}
-	utils.ReturnOk(c)
+	utils.ReturnOkString(c, "改名成功")
 }
