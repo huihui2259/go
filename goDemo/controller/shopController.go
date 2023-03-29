@@ -1,1 +1,101 @@
 package controller
+
+import (
+	"encoding/json"
+	"goDemo/service"
+	"goDemo/utils"
+	"strconv"
+
+	"github.com/gin-gonic/gin"
+)
+
+func GetShopByID(c *gin.Context) {
+	id := utils.AnalyzeID(c)
+	if id == -1 {
+		utils.ReturnErrorString(c, "id错误")
+		return
+	}
+	shop, err := service.GetShopByID(id)
+	if err != nil {
+		utils.ReturnErrorString(c, err.String())
+		return
+	}
+	shopJson, _ := json.Marshal(shop)
+	utils.ReturnOkString(c, string(shopJson))
+}
+
+func GetShopListByType(c *gin.Context) {
+	typeID, ok := c.GetQuery("type_id")
+	if !ok {
+		utils.ReturnErrorString(c, "typeID错误")
+		return
+	}
+	TypeID, _ := strconv.Atoi(typeID)
+	field := c.Query("field")
+	shopList, err := service.GetShopListByTypeID(TypeID, field)
+	if err != nil {
+		utils.ReturnErrorString(c, err.String())
+		return
+	}
+	listJson, _ := json.Marshal(shopList)
+	utils.ReturnOkString(c, string(listJson))
+}
+
+func GetShopListByPage(c *gin.Context) {
+	typeID, _ := strconv.Atoi(c.Query("type_id"))
+	pageCount, _ := strconv.Atoi(c.Query("count"))
+	pageIndex, _ := strconv.Atoi(c.Query("index"))
+	field := c.Query("field")
+	shopList, err := service.GetShopListByPage(typeID, pageIndex, pageCount, field)
+	if err != nil {
+		utils.ReturnErrorString(c, err.String())
+		return
+	}
+	listJson, _ := json.Marshal(shopList)
+	utils.ReturnOkString(c, string(listJson))
+}
+
+func UpdateShopByID(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Query("id"))
+	field := c.Query("field")
+	value := c.Query("value")
+	err := service.UpdateShopByID(id, field, value)
+	if err != nil {
+		utils.ReturnErrorString(c, err.String())
+		return
+	}
+	utils.ReturnOk(c)
+}
+
+// 解决了缓存穿透的获取shop
+func GetShopByIDChuanTou(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Query("id"))
+	shop, err := service.GetShopByIDChuanTou(id)
+	if err != nil {
+		utils.ReturnErrorString(c, err.String())
+		return
+	}
+	jsons, _ := json.Marshal(shop)
+	utils.ReturnOkString(c, string(jsons))
+}
+
+// 解决了缓存穿透和使用互斥锁缓存击穿的获取shop
+func GetShopByIDJiChuan(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Query("id"))
+	shop, err := service.GetShopByIDJiChuan(id)
+	if err != nil {
+		utils.ReturnErrorString(c, err.String())
+		return
+	}
+	jsons, _ := json.Marshal(shop)
+	utils.ReturnOkString(c, string(jsons))
+}
+
+// 测试获取分布式锁
+func GetLock(c *gin.Context) {
+	key := c.Query("lock")
+	flag := utils.TryLock(key)
+	if flag {
+		utils.ReturnOkString(c, "获取锁成功")
+	}
+}

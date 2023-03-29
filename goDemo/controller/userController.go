@@ -1,5 +1,6 @@
 package controller
 
+// 实际开发中，这里的函数理应将结构体或错误值作为返回值，但这里由于确实前端，因此直接返回到前端
 import (
 	"encoding/json"
 	"goDemo/entity"
