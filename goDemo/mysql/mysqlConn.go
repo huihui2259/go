@@ -15,7 +15,7 @@ var Db *gorm.DB
 func init() {
 	cfg := conf.Config
 	log.Println(cfg)
-	dbParams := fmt.Sprintf("%v:%v@tcp(%v)/%v?charset=utf8&parseTime=True&loc=Local", cfg.User, cfg.Password, cfg.Host, cfg.DBName)
+	dbParams := fmt.Sprintf("%v:%v@tcp(%v)/%v?charset=utf8&parseTime=False&loc=Local", cfg.User, cfg.Password, cfg.Host, cfg.DBName)
 	var err error
 	Db, err = gorm.Open("mysql", dbParams)
 	if err != nil {

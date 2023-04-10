@@ -15,9 +15,13 @@ func InitRouter() *gin.Engine {
 		userRouter.GET("/get", controller.GetUser)
 		userRouter.GET("/delete", controller.DeleteUser)
 		userRouter.GET("/update", controller.UpdateName)
+		// http://9.135.34.52:8089/user/save
+		userRouter.POST("/save", controller.SaveTest)
 	}
 	shopRouter := router.Group("/shop")
 	{
+		shopRouter.GET("/test/:id", controller.GetTest)
+		shopRouter.POST("/post", controller.PostTest)
 		shopRouter.GET("/get", controller.GetShopByID)
 		shopRouter.GET("/getType", controller.GetShopListByType)
 		// http://9.135.34.52:8089/shop/getPage?type_id=1&index=1&count=3&field=*
@@ -30,6 +34,28 @@ func InitRouter() *gin.Engine {
 		shopRouter.GET("/lock", controller.GetLock)
 		// http://9.135.34.52:8089/shop/jichuan?id=1
 		shopRouter.GET("/jichuan", controller.GetShopByIDJiChuan)
+	}
+
+	voucherRouter := router.Group("/voucher")
+	{
+		// http://9.135.34.52:8089/voucher/get?id=1
+		voucherRouter.GET("/get", controller.GetVoucher)
+		// http://9.135.34.52:8089/voucher/add
+		voucherRouter.POST("/add", controller.AddSecKillVoucher)
+
+	}
+	seckillRouter := router.Group("/seckill")
+	{
+		// http://9.135.34.52:8089/seckill/simple
+		seckillRouter.GET("/simple", controller.SecKillSimple)
+		// http://9.135.34.52:8089/seckill/optimistic
+		seckillRouter.GET("/optimistic", controller.SecKillOptimistic)
+		// http://9.135.34.52:8089/seckill/init
+		seckillRouter.GET("/init", controller.SecKillInit)
+		// http://9.135.34.52:8089/seckill/single
+		seckillRouter.GET("/single", controller.SecKillSingleOrder)
+		// http://9.135.34.52:8089/seckill/lockSingle
+		seckillRouter.GET("/lockSingle", controller.SecKillLockSingle)
 	}
 
 	router.GET("/ping", pingHandler)

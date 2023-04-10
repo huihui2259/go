@@ -1,14 +1,13 @@
 package entity
 
-// 对admin_user表的操作
 type User struct {
-	ID         int    `gorm:"column:id"`
-	Phone      string `gorm:"column:phone"`
-	NickName   string `gorm:"column:nick_name"`
-	Password   string `gorm:"column:password"`
-	Icon       string `gorm:"column:icon"`
-	CreateTime string `gorm:"column:create_time"`
-	UpdateTime string `gorm:"column:update_time"`
+	ID         int    `gorm:"column:id;primaryKey" json:"id"`
+	Phone      string `gorm:"column:phone" json:"phone"`
+	NickName   string `gorm:"column:nick_name" json:"nickname"`
+	Password   string `gorm:"column:password" json:"password"`
+	Icon       string `gorm:"column:icon" json:"icon"`
+	CreateTime string `gorm:"column:create_time" json:"createTime"`
+	UpdateTime string `gorm:"column:update_time" json:"updateTime"`
 }
 
 func (User) TableName() string {

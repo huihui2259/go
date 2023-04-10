@@ -2,11 +2,10 @@ package utils
 
 import (
 	"goDemo/redis"
-	"time"
 )
 
 func TryLock(key string) bool {
-	flag, err := redis.RedisClient.SetNX(key, "1", 10*time.Second).Result()
+	flag, err := redis.RedisClient.SetNX(key, "1", LockExpireTime).Result()
 	if err != nil {
 		return false
 	}

@@ -13,6 +13,21 @@ import (
 	Redis "github.com/go-redis/redis"
 )
 
+func GetShopTest1(id string) string {
+	result, err := redis.RedisClient.Get(utils.ShopIDPrefix + id).Result()
+	if err == nil {
+		return result
+	}
+	return ""
+}
+
+func GetShopTest2(id int) string {
+	shop := &entity.Shop{}
+	mysql.Db.Find(shop, "id = ?", id)
+	jsons, _ := json.Marshal(shop)
+	return string(jsons)
+}
+
 func GetShopByID(id int) (*entity.Shop, *utils.MyError) {
 	shop := &entity.Shop{}
 	myError := &utils.MyError{}
@@ -60,6 +75,10 @@ func GetShopListByPage(typeID, pageIndex, pageCount int, field string) (*[]entit
 		return shopList, myError
 	}
 	return shopList, nil
+}
+
+func SaveShop(shop *entity.Shop) {
+	mysql.Db.Model(shop).Create(shop)
 }
 
 func UpdateShopByID(id int, field, value string) *utils.MyError {
@@ -156,6 +175,7 @@ func GetShopByIDJiChuan(id int) (*entity.Shop, *utils.MyError) {
 		time.Sleep(50 * time.Millisecond)
 		return GetShopByIDJiChuan(id)
 	}
+	defer utils.UnLock(lockKey)
 	// 获取到锁，查询数据库
 	dbRes := mysql.Db.Model(&entity.Shop{}).Where("id = ?", id).Find(shop)
 	if dbRes.RowsAffected == 0 {

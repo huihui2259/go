@@ -53,6 +53,12 @@ func Register(c *gin.Context) {
 	utils.ReturnOkString(c, "注册成功")
 }
 
+func SaveTest(c *gin.Context) {
+	user := &entity.User{}
+	c.BindJSON(user)
+	service.RegisterUser(user)
+}
+
 func GetUser(c *gin.Context) {
 	id, ok := c.GetQuery("id")
 	if !ok {

@@ -2,12 +2,31 @@ package controller
 
 import (
 	"encoding/json"
+	"goDemo/entity"
 	"goDemo/service"
 	"goDemo/utils"
+	"log"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
+
+func GetTest(c *gin.Context) {
+	id := c.Param("id")
+	s := service.GetShopTest1(id)
+	utils.ReturnOkString(c, s)
+}
+
+func PostTest(c *gin.Context) {
+	// json := make(map[string]interface{}) //注意该结构接受的内容
+	// c.BindJSON(&json)
+	// log.Printf("%v", &json)
+	shop := &entity.Shop{}
+	c.BindJSON(shop)
+	log.Println(shop)
+	service.SaveShop(shop)
+	utils.ReturnOk(c)
+}
 
 func GetShopByID(c *gin.Context) {
 	id := utils.AnalyzeID(c)

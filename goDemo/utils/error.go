@@ -3,7 +3,7 @@ package utils
 import "fmt"
 
 type MyError struct {
-	Message1 string // 函数返回错误
+	Message1 string `default:"default error"` // 函数返回错误
 	Message2 string // 自定义错误
 }
 
