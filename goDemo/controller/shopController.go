@@ -2,11 +2,15 @@ package controller
 
 import (
 	"encoding/json"
+	"fmt"
 	"goDemo/entity"
 	"goDemo/service"
 	"goDemo/utils"
 	"log"
 	"strconv"
+	"time"
+
+	"github.com/google/uuid"
 
 	"github.com/gin-gonic/gin"
 )
@@ -113,8 +117,13 @@ func GetShopByIDJiChuan(c *gin.Context) {
 // 测试获取分布式锁
 func GetLock(c *gin.Context) {
 	key := c.Query("lock")
-	flag := utils.TryLock(key)
+	value := uuid.New().String()
+	flag := utils.TryLock(key, value)
 	if flag {
+		fmt.Println("获取锁成功,暂停20秒钟...")
+		time.Sleep(20 * time.Second)
+		utils.UnLock(key, value)
+		fmt.Println("已解锁...")
 		utils.ReturnOkString(c, "获取锁成功")
 	}
 }

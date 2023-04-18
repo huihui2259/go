@@ -31,7 +31,7 @@ func GetUserByID(id int) (*entity.User, *utils.MyError) {
 	}
 	// mysql找到，就再次插入redis
 	jsons, _ := json.Marshal(user)
-	if err := redis.RedisClient.Set(utils.UserIDPrefix+strconv.Itoa(id), string(jsons), 0).Err(); err != nil {
+	if err := redis.RedisClient.Set(utils.UserIDPrefix+strconv.Itoa(id), string(jsons), utils.CommonExpireTime).Err(); err != nil {
 		myError.Message1 = err.Error()
 		myError.Message2 = utils.SetRedisError
 		return user, myError
@@ -51,7 +51,7 @@ func RegisterUser(user *entity.User) *utils.MyError {
 	}
 	// 注册成功，写入redis
 	jsons, _ := json.Marshal(user)
-	if err := redis.RedisClient.Set(utils.UserIDPrefix+strconv.Itoa(user.ID), string(jsons), 0).Err(); err != nil {
+	if err := redis.RedisClient.Set(utils.UserIDPrefix+strconv.Itoa(user.ID), string(jsons), utils.CommonExpireTime).Err(); err != nil {
 		myError.Message1 = err.Error()
 		myError.Message2 = utils.SetRedisError
 		return myError

@@ -56,6 +56,10 @@ func InitRouter() *gin.Engine {
 		seckillRouter.GET("/single", controller.SecKillSingleOrder)
 		// http://9.135.34.52:8089/seckill/lockSingle
 		seckillRouter.GET("/lockSingle", controller.SecKillLockSingle)
+		// http://9.135.34.52:8089/seckill/kafkaV1
+		seckillRouter.GET("/kafkaV1", controller.SecKillKafkaV1)
+		// http://9.135.34.52:8089/seckill/final
+		seckillRouter.GET("/final", controller.SecKillFinal)
 	}
 
 	router.GET("/ping", pingHandler)

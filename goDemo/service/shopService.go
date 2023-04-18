@@ -11,6 +11,7 @@ import (
 	"time"
 
 	Redis "github.com/go-redis/redis"
+	"github.com/google/uuid"
 )
 
 func GetShopTest1(id string) string {
@@ -44,7 +45,7 @@ func GetShopByID(id int) (*entity.Shop, *utils.MyError) {
 	}
 	// 数据库找到，回写redis
 	jsons, _ := json.Marshal(shop)
-	err = redis.RedisClient.Set(utils.ShopIDPrefix+strconv.Itoa(id), jsons, 0).Err()
+	err = redis.RedisClient.Set(utils.ShopIDPrefix+strconv.Itoa(id), jsons, utils.CommonExpireTime).Err()
 	if err != nil {
 		myError.Message1 = err.Error()
 		myError.Message2 = utils.SetRedisError
@@ -121,7 +122,7 @@ func GetShopByIDChuanTou(id int) (*entity.Shop, *utils.MyError) {
 	dbRes := mysql.Db.Find(shop, "id = ?", id)
 	if dbRes.Error != nil {
 		// 数据库没找到，缓存空数据
-		redis.RedisClient.Set(utils.ShopIDPrefix+strconv.Itoa(id), "", 0)
+		redis.RedisClient.Set(utils.ShopIDPrefix+strconv.Itoa(id), "", utils.CommonExpireTime)
 
 		myError.Message1 = dbRes.Error.Error()
 		myError.Message2 = utils.ValueNullError
@@ -129,7 +130,7 @@ func GetShopByIDChuanTou(id int) (*entity.Shop, *utils.MyError) {
 	}
 	// 数据库找到，回写redis
 	jsons, _ := json.Marshal(shop)
-	err = redis.RedisClient.Set(utils.ShopIDPrefix+strconv.Itoa(id), jsons, 0).Err()
+	err = redis.RedisClient.Set(utils.ShopIDPrefix+strconv.Itoa(id), jsons, utils.CommonExpireTime).Err()
 	if err != nil {
 		myError.Message1 = err.Error()
 		myError.Message2 = utils.SetRedisError
@@ -170,18 +171,19 @@ func GetShopByIDJiChuan(id int) (*entity.Shop, *utils.MyError) {
 	}
 	// 在redis中没找到，尝试获取锁
 	lockKey := utils.LockPrefix + strconv.Itoa(id)
-	isLock := utils.TryLock(lockKey)
+	value := uuid.New().String()
+	isLock := utils.TryLock(lockKey, value)
 	if !isLock {
 		time.Sleep(50 * time.Millisecond)
 		return GetShopByIDJiChuan(id)
 	}
-	defer utils.UnLock(lockKey)
+	defer utils.UnLock(lockKey, value)
 	// 获取到锁，查询数据库
 	dbRes := mysql.Db.Model(&entity.Shop{}).Where("id = ?", id).Find(shop)
 	if dbRes.RowsAffected == 0 {
 		// 查询未错但没找到
 		log.Println("未找到")
-		redis.RedisClient.Set(key, "", 0)
+		redis.RedisClient.Set(key, "", utils.CommonExpireTime)
 		myError.Message2 = utils.ValueNullError
 		return shop, myError
 	}

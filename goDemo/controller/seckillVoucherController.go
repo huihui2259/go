@@ -69,7 +69,37 @@ func SecKillLockSingle(c *gin.Context) {
 	utils.ReturnOkString(c, res)
 }
 
+// 引入kafka
+func SecKillKafkaV1(c *gin.Context) {
+	voucherIDStr := c.Query("voucherID")
+	userIDStr := c.Query("userID")
+	voucherID, _ := strconv.Atoi(voucherIDStr)
+	userID, _ := strconv.Atoi(userIDStr)
+	err := service.SecKillWithKafkaV1(voucherID, userID)
+
+	if err != nil {
+		utils.ReturnErrorString(c, err.String())
+		return
+	}
+	utils.ReturnOk(c)
+}
+
 func SecKillInit(c *gin.Context) {
 	service.SecKillInit()
+	utils.ReturnOk(c)
+}
+
+// 最终版本的秒杀
+func SecKillFinal(c *gin.Context) {
+	voucherIDStr := c.Query("voucherID")
+	userIDStr := c.Query("userID")
+	voucherID, _ := strconv.Atoi(voucherIDStr)
+	userID, _ := strconv.Atoi(userIDStr)
+	err := service.SecKillWithRedis(voucherID, userID)
+
+	if err != nil {
+		utils.ReturnErrorString(c, err.String())
+		return
+	}
 	utils.ReturnOk(c)
 }
