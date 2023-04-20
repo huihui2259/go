@@ -38,7 +38,6 @@ func init() {
 		SecKillExpireTime[voucher.VoucherID] = time.Duration(end - begin)
 		log2.Info.Printf("过期时间: %d", end-begin)
 	}
-
 }
 
 func GetAllSeckillVoucher() *[]entity.SecKillVoucher {

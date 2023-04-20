@@ -291,3 +291,103 @@ Info: 2023/04/13 17:30:35 api.go:52: {"VoucherID":2,"UserID":1}
 Info: 2023/04/13 17:30:35 api.go:52: {"VoucherID":2,"UserID":1}
 Info: 2023/04/13 17:30:35 api.go:52: {"VoucherID":2,"UserID":1}
 Info: 2023/04/13 17:30:35 api.go:52: {"VoucherID":2,"UserID":1}
+Info: 2023/04/18 16:18:52 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/18 16:29:18 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/18 16:33:25 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/18 16:38:56 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/18 16:40:21 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/18 16:41:17 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/18 16:42:19 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 10:11:48 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 10:14:08 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 11:37:29 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 11:43:45 blogService.go:67: score: 1681875507.000000
+Info: 2023/04/19 16:08:47 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 16:08:47 userService.go:37: &[]
+Info: 2023/04/19 16:09:41 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 16:09:41 userService.go:38: &[]
+Info: 2023/04/19 16:11:29 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 16:11:29 userService.go:38: &[]
+Info: 2023/04/19 16:11:53 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 16:11:53 userService.go:38: &[]
+Info: 2023/04/19 16:12:14 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 16:12:14 userService.go:38: &[]
+Info: 2023/04/19 16:14:12 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 16:14:12 userService.go:38: &[]
+Info: 2023/04/19 16:14:42 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 16:14:42 userService.go:38: &[{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00} {2 13838411438 可可今天不吃肉  /imgs/icons/kkjtbcr.jpg 2021-12-24 15:14:39 2021-12-28 19:58:04} {3 15754506938 PonyMa 123456  2023-03-23 20:13:08 2023-03-23 20:13:08} {4 13456789011 销户   2022-01-07 12:07:53 2023-03-27 19:03:30} {5 13456789001 user_n0bb8mwwg4   2022-01-07 16:11:33 2022-01-07 16:11:33} {6 15754758907 jack 147258  2023-04-04 11:08:00 2023-04-04 11:08:00}]
+Info: 2023/04/19 16:54:42 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 16:57:40 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 16:57:46 userService.go:22: 当前登录的用户 &{4 13456789011 销户   2022-01-07 12:07:53 2023-03-27 19:03:30}
+Info: 2023/04/19 16:57:46 blogService.go:65: 进行点赞
+Info: 2023/04/19 16:58:30 userService.go:22: 当前登录的用户 &{0      }
+Info: 2023/04/19 16:58:30 blogService.go:65: 进行点赞
+Info: 2023/04/19 17:02:37 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 17:09:52 userService.go:38: &[{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00} {2 13838411438 可可今天不吃肉  /imgs/icons/kkjtbcr.jpg 2021-12-24 15:14:39 2021-12-28 19:58:04} {3 15754506938 PonyMa 123456  2023-03-23 20:13:08 2023-03-23 20:13:08} {4 13456789011 销户   2022-01-07 12:07:53 2023-03-27 19:03:30} {5 13456789001 user_n0bb8mwwg4   2022-01-07 16:11:33 2022-01-07 16:11:33} {6 15754758907 jack 147258  2023-04-04 11:08:00 2023-04-04 11:08:00}]
+Info: 2023/04/19 17:12:37 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 17:12:40 blogService.go:81: [4]
+Info: 2023/04/19 17:12:40 blogService.go:83: [4]
+Info: 2023/04/19 17:12:40 userService.go:38: &[{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00} {2 13838411438 可可今天不吃肉  /imgs/icons/kkjtbcr.jpg 2021-12-24 15:14:39 2021-12-28 19:58:04} {3 15754506938 PonyMa 123456  2023-03-23 20:13:08 2023-03-23 20:13:08} {4 13456789011 销户   2022-01-07 12:07:53 2023-03-27 19:03:30} {5 13456789001 user_n0bb8mwwg4   2022-01-07 16:11:33 2022-01-07 16:11:33} {6 15754758907 jack 147258  2023-04-04 11:08:00 2023-04-04 11:08:00}]
+Info: 2023/04/19 17:14:30 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 17:14:36 blogService.go:81: [4]
+Info: 2023/04/19 17:14:36 blogService.go:83: [4]
+Info: 2023/04/19 17:14:36 userService.go:36: select * from tb_user where id in (4) order by field(id,4)
+Info: 2023/04/19 17:14:36 userService.go:38: &[{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00} {2 13838411438 可可今天不吃肉  /imgs/icons/kkjtbcr.jpg 2021-12-24 15:14:39 2021-12-28 19:58:04} {3 15754506938 PonyMa 123456  2023-03-23 20:13:08 2023-03-23 20:13:08} {4 13456789011 销户   2022-01-07 12:07:53 2023-03-27 19:03:30} {5 13456789001 user_n0bb8mwwg4   2022-01-07 16:11:33 2022-01-07 16:11:33} {6 15754758907 jack 147258  2023-04-04 11:08:00 2023-04-04 11:08:00}]
+Info: 2023/04/19 17:20:05 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/19 17:20:11 blogService.go:81: [4]
+Info: 2023/04/19 17:20:11 blogService.go:83: [4]
+Info: 2023/04/19 17:20:11 userService.go:36: select * from tb_user where id in (4) order by field(id,4)
+Info: 2023/04/19 17:20:11 userService.go:38: &[{4 13456789011 销户   2022-01-07 12:07:53 2023-03-27 19:03:30}]
+Info: 2023/04/19 17:24:50 userService.go:22: 当前登录的用户 &{3 15754506938 PonyMa 123456  2023-03-23 20:13:08 2023-03-23 20:13:08}
+Info: 2023/04/19 17:24:50 blogService.go:65: 进行点赞
+Info: 2023/04/19 17:25:01 blogService.go:81: [4 3]
+Info: 2023/04/19 17:25:01 blogService.go:83: [4 3]
+Info: 2023/04/19 17:25:01 userService.go:36: select * from tb_user where id in (4,3) order by field(id,4,3)
+Info: 2023/04/19 17:25:01 userService.go:38: &[{4 13456789011 销户   2022-01-07 12:07:53 2023-03-27 19:03:30} {3 15754506938 PonyMa 123456  2023-03-23 20:13:08 2023-03-23 20:13:08}]
+Info: 2023/04/19 17:25:14 userService.go:22: 当前登录的用户 &{3 15754506938 PonyMa 123456  2023-03-23 20:13:08 2023-03-23 20:13:08}
+Info: 2023/04/19 17:25:14 blogService.go:68: score: 1681896290.000000
+Info: 2023/04/19 17:25:14 blogService.go:71: 取消点赞
+Info: 2023/04/19 17:25:24 userService.go:22: 当前登录的用户 &{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00}
+Info: 2023/04/19 17:25:24 blogService.go:65: 进行点赞
+Info: 2023/04/19 17:25:31 blogService.go:81: [4 1]
+Info: 2023/04/19 17:25:31 blogService.go:83: [4 1]
+Info: 2023/04/19 17:25:31 userService.go:36: select * from tb_user where id in (4,1) order by field(id,4,1)
+Info: 2023/04/19 17:25:31 userService.go:38: &[{4 13456789011 销户   2022-01-07 12:07:53 2023-03-27 19:03:30} {1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00}]
+Info: 2023/04/20 16:07:54 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/20 16:12:40 userService.go:30: 当前登录的用户 &{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00}
+Info: 2023/04/20 16:12:40 userService.go:30: 当前登录的用户 &{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00}
+Info: 2023/04/20 16:12:40 blogService.go:133: RowsAffected: 1
+Info: 2023/04/20 16:12:48 userService.go:30: 当前登录的用户 &{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00}
+Info: 2023/04/20 16:12:48 userService.go:30: 当前登录的用户 &{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00}
+Info: 2023/04/20 16:12:49 userService.go:30: 当前登录的用户 &{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00}
+Info: 2023/04/20 16:12:49 userService.go:30: 当前登录的用户 &{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00}
+Info: 2023/04/20 16:12:49 blogService.go:133: RowsAffected: 1
+Info: 2023/04/20 16:13:37 userService.go:30: 当前登录的用户 &{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00}
+Info: 2023/04/20 16:19:09 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/20 16:19:13 blogService.go:182: RowsAffected: 1
+Info: 2023/04/20 16:38:52 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/20 16:38:59 blogService.go:182: RowsAffected: 1
+Info: 2023/04/20 16:39:03 blogService.go:182: RowsAffected: 1
+Info: 2023/04/20 16:39:57 blogService.go:182: RowsAffected: 1
+Info: 2023/04/20 16:40:24 blogService.go:205: []
+Info: 2023/04/20 16:44:39 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/20 16:44:45 blogService.go:209: []
+Info: 2023/04/20 16:45:08 blogService.go:186: RowsAffected: 1
+Info: 2023/04/20 16:45:23 blogService.go:186: RowsAffected: 1
+Info: 2023/04/20 16:45:34 blogService.go:186: RowsAffected: 1
+Info: 2023/04/20 16:47:45 userService.go:30: 当前登录的用户 &{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00}
+Info: 2023/04/20 16:47:45 userService.go:30: 当前登录的用户 &{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00}
+Info: 2023/04/20 16:47:47 userService.go:30: 当前登录的用户 &{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00}
+Info: 2023/04/20 16:47:47 userService.go:30: 当前登录的用户 &{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00}
+Info: 2023/04/20 16:47:47 blogService.go:140: RowsAffected: 1
+Info: 2023/04/20 16:48:08 blogService.go:209: [2]
+Info: 2023/04/20 16:52:12 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/04/20 16:52:17 blogService.go:209: [2]
+Info: 2023/04/20 16:52:17 userService.go:44: select * from tb_user where id in (2) order by field(id,2)
+Info: 2023/04/20 16:52:17 userService.go:46: &[{2 13838411438 可可今天不吃肉  /imgs/icons/kkjtbcr.jpg 2021-12-24 15:14:39 2021-12-28 19:58:04}]
+Info: 2023/04/20 16:52:26 userService.go:30: 当前登录的用户 &{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00}
+Info: 2023/04/20 16:52:26 userService.go:30: 当前登录的用户 &{1 13686869696 小鱼同学  /imgs/blogs/blog1.jpg 2021-12-24 10:27:19 2022-01-11 16:04:00}
+Info: 2023/04/20 16:52:26 blogService.go:140: RowsAffected: 1
+Info: 2023/04/20 16:52:32 blogService.go:209: [2 3]
+Info: 2023/04/20 16:52:32 userService.go:44: select * from tb_user where id in (2,3) order by field(id,2,3)
+Info: 2023/04/20 16:52:32 userService.go:46: &[{2 13838411438 可可今天不吃肉  /imgs/icons/kkjtbcr.jpg 2021-12-24 15:14:39 2021-12-28 19:58:04} {3 15754506938 PonyMa 123456  2023-03-23 20:13:08 2023-03-23 20:13:08}]

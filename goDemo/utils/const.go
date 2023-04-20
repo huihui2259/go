@@ -13,15 +13,18 @@ const (
 	SecKillOrderLockPrefix = "order::lock::"
 	VoucherStockPrefix     = "stock::id::"
 	SecKillUserIDPrefix    = "seckill::user::"
+	BlogLikedIDPrefix      = "blog::liked::"
+	FollowIDPrefix         = "follow::id::"
 
-	GetMysqlError    = "获取数据库错误"
-	InsertMysqlError = "插入数据库错误"
-	DeleteMysqlError = "删除数据库错误"
-	UpdateMysqlError = "更新数据库错误"
-	GetRedisError    = "获取redis错误"
-	SetRedisError    = "设置redis错误"
-	DelRedisError    = "删除redis错误"
-	ValueNullError   = "数据为空"
+	GetMysqlError     = "获取数据库错误"
+	GetEmptyDataError = "获取到空数据"
+	InsertMysqlError  = "插入数据库错误"
+	DeleteMysqlError  = "删除数据库错误"
+	UpdateMysqlError  = "更新数据库错误"
+	GetRedisError     = "获取redis错误"
+	SetRedisError     = "设置redis错误"
+	DelRedisError     = "删除redis错误"
+	ValueNullError    = "数据为空"
 
 	// 秒杀活动中出现的错误
 	StockNotEnough    = "库存不足"
@@ -38,4 +41,10 @@ const (
 	SecKillExpireTime = 24 * time.Hour
 
 	CommonValue = "common value"
+
+	// 查询一页数据默认值
+	PageSize = 2
+
+	// 一些常识值
+	Zero = 0
 )

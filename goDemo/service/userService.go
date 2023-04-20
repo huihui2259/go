@@ -2,13 +2,51 @@ package service
 
 import (
 	"encoding/json"
+	"fmt"
 	"goDemo/entity"
+	"goDemo/log2"
 	"goDemo/mysql"
 	"goDemo/redis"
 	"goDemo/utils"
 	"log"
 	"strconv"
+	"time"
 )
+
+func GetUser() *entity.User {
+	// 模拟登录,每次登录不同id
+	now := time.Now().Unix()
+
+	id := int(now%6) + 1
+	user, _ := GetUserByID(id)
+	log2.Info.Printf("当前登录的用户 %v", user)
+	return user
+}
+
+func GetUserNow() *entity.User {
+	// 模拟登录,每次只登录id=1
+	id := 1
+	user, _ := GetUserByID(id)
+	log2.Info.Printf("当前登录的用户 %v", user)
+	return user
+}
+
+// func GetUsers() *[]entity.User {
+// 	// 模拟登录
+// 	id := 1
+// 	user, _ := GetUserByID(id)
+// 	return user
+// }
+
+func GetUsersByIDs(ids []int) *[]entity.User {
+	users := &[]entity.User{}
+	query := fmt.Sprintf("select * from tb_user where id in (%s) order by field(id,%s)", utils.StringJoin(ids, ","), utils.StringJoin(ids, ","))
+	log2.Info.Println(query)
+	mysql.Db.Model(&entity.User{}).Raw(query).Find(users)
+	log2.Info.Println(users)
+	return users
+	// mysql.Db.Model(&entity.User{}).Where("id IN ?", ids).Order("FIELD(id,?)", ids).Find(users)
+}
 
 func GetUserByID(id int) (*entity.User, *utils.MyError) {
 	user := &entity.User{}

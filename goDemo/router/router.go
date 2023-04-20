@@ -62,6 +62,23 @@ func InitRouter() *gin.Engine {
 		seckillRouter.GET("/final", controller.SecKillFinal)
 	}
 
+	blogRouter := router.Group("/blog")
+	{
+		blogRouter.GET("/hot", controller.GetHotBlog)
+		// http://9.135.34.52:8089/blog/5
+		blogRouter.GET("/:id", controller.GetBlogByID)
+		// http://9.135.34.52:8089/blog/like/5
+		blogRouter.GET("/like/:blogID", controller.LikeBlog)
+		// http://9.135.34.52:8089/blog/queryLikes/5
+		blogRouter.GET("/queryLikes/:blogID", controller.QueryLikes)
+		// http://9.135.34.52:8089/blog/followV1/2
+		blogRouter.GET("/followV1/:userID", controller.FollowV1)
+		// http://9.135.34.52:8089/blog/followV2/4/2
+		blogRouter.GET("/followV2/:myID/:userID", controller.FollowV2)
+		// http://9.135.34.52:8089/blog/common/4/1
+		blogRouter.GET("/common/:myID/:userID", controller.CommonFollow)
+	}
+
 	router.GET("/ping", pingHandler)
 	router.GET("/ip", ipHandler)
 
