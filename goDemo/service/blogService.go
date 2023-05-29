@@ -82,7 +82,7 @@ func QueryLikes(blogID int) (*[]entity.User, *utils.MyError) {
 	userList := &[]entity.User{}
 	//myError := &utils.MyError{}
 	key := utils.BlogLikedIDPrefix + strconv.Itoa(blogID)
-	ids, _ := redis.RedisClient.ZRange(key, utils.Zero, 5).Result()
+	ids, _ := redis.RedisClient.ZRange(key, utils.ZERO, 5).Result()
 	log2.Info.Println(ids)
 	idsInt := utils.StringSliceToInt(ids)
 	log2.Info.Println(idsInt)

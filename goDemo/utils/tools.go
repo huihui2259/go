@@ -26,9 +26,13 @@ func GetNowTimeString() string {
 }
 
 func StringToUnix(timeStr string) int64 {
-	loc, _ := time.LoadLocation("Local")                         //获取时区
-	theTime, _ := time.ParseInLocation(TimeFormat, timeStr, loc) //使用模板在对应时区转化为time.time类型
-	return theTime.Unix()
+	return StringToTime(timeStr, TimeFormat).Unix()
+}
+
+func StringToTime(timeStr, format string) time.Time {
+	loc, _ := time.LoadLocation(Local)                      //获取时区
+	myTime, _ := time.ParseInLocation(format, timeStr, loc) //使用模板在对应时区转化为time.time类型
+	return myTime
 }
 
 func UnixToString(timeUnix int64) string {

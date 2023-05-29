@@ -79,6 +79,18 @@ func InitRouter() *gin.Engine {
 		blogRouter.GET("/common/:myID/:userID", controller.CommonFollow)
 	}
 
+	signRouter := router.Group("/sign")
+	{
+		// http://9.135.34.52:8089/sign/1
+		signRouter.GET("/:id", controller.Sign)
+		// http://9.135.34.52:8089/sign/1/20230523
+		signRouter.GET("/:id/:date", controller.IsSign)
+		// http://9.135.34.52:8089/sign/sum/1
+		signRouter.GET("/sum/:id", controller.SumSign)
+		// http://9.135.34.52:8089/sign/remedy/1/20230523
+		signRouter.GET("/remedy/:id/:date", controller.RemedySign)
+	}
+
 	router.GET("/ping", pingHandler)
 	router.GET("/ip", ipHandler)
 

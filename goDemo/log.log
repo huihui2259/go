@@ -391,3 +391,24 @@ Info: 2023/04/20 16:52:26 blogService.go:140: RowsAffected: 1
 Info: 2023/04/20 16:52:32 blogService.go:209: [2 3]
 Info: 2023/04/20 16:52:32 userService.go:44: select * from tb_user where id in (2,3) order by field(id,2,3)
 Info: 2023/04/20 16:52:32 userService.go:46: &[{2 13838411438 可可今天不吃肉  /imgs/icons/kkjtbcr.jpg 2021-12-24 15:14:39 2021-12-28 19:58:04} {3 15754506938 PonyMa 123456  2023-03-23 20:13:08 2023-03-23 20:13:08}]
+Info: 2023/05/19 17:40:56 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/05/23 15:53:28 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/05/24 09:48:05 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/05/24 09:55:07 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/05/24 09:55:54 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/05/24 10:00:10 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/05/24 10:00:16 signService.go:35: offset: 22
+Info: 2023/05/24 10:00:16 signService.go:36: key: sign::202305:1
+Info: 2023/05/25 15:45:54 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/05/25 15:46:37 signService.go:60: value:   
+Info: 2023/05/25 17:29:28 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/05/25 17:31:34 signService.go:35: offset: 23
+Info: 2023/05/25 17:31:34 signService.go:36: key: sign::202305:1
+Info: 2023/05/25 17:35:09 signService.go:59: value:   
+Info: 2023/05/25 17:37:15 seckillVoucherService.go:39: 过期时间: 8467200
+Info: 2023/05/25 17:38:01 signService.go:35: offset: 24
+Info: 2023/05/25 17:38:01 signService.go:36: key: sign::202305:1
+Info: 2023/05/25 17:41:13 signService.go:35: offset: 21
+Info: 2023/05/25 17:41:13 signService.go:36: key: sign::202305:1
+Info: 2023/05/25 17:41:21 signService.go:35: offset: 21
+Info: 2023/05/25 17:41:21 signService.go:36: key: sign::202305:1

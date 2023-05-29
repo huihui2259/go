@@ -15,6 +15,7 @@ const (
 	SecKillUserIDPrefix    = "seckill::user::"
 	BlogLikedIDPrefix      = "blog::liked::"
 	FollowIDPrefix         = "follow::id::"
+	SignPrefix             = "sign::"
 
 	GetMysqlError     = "获取数据库错误"
 	GetEmptyDataError = "获取到空数据"
@@ -35,6 +36,14 @@ const (
 
 	TimeFormat        = "2006-01-02 15:04:05"
 	InitTime          = "2000-01-01 00:00:00"
+	TimeFormat1       = "20060102"
+	Local             = "Local"
+	Year              = "2006"
+	Month             = "01"
+	Day               = "02"
+	Hour              = "15"
+	Minute            = "04"
+	Second            = "05"
 	OneDay            = 24 * 60 * 60
 	CommonExpireTime  = 24 * time.Hour
 	LockExpireTime    = 10 * time.Second // 为了表现出锁，故意将时间调大
@@ -46,5 +55,7 @@ const (
 	PageSize = 2
 
 	// 一些常识值
-	Zero = 0
+	ZERO  = 0
+	FALSE = 0
+	TRUE  = 1
 )
